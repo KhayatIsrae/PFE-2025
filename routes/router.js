@@ -1,16 +1,11 @@
 const express=require("express")
 const router=express.Router()
+const controller=require("../controllers/controller")
 
-let WALLET_CONNECTED=""
 
 router.route("/")
-.get((req,res)=>{
-    res.render("index.ejs",{WALLET_CONNECTED})
-})
-.post((req,res)=>{
-    WALLET_CONNECTED=req.body.WALLET_CONNECTED
-    res.redirect("/")
-})
+.get(controller.get)
+.post(controller.post)
 
 
 module.exports=router
