@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <script src="/js/script.js" defer></script>
-    
+ 
 </head>
 <body>
     <!-- Header -->
@@ -21,9 +21,14 @@
             <img src="/images/background.jpg" alt="Background Image">
         </div>
         <% if(locals.WALLET_CONNECTED==="" ){ %>
+            <div class="hide" id="popUp">
+                <span>MetaMask n'est pas installé. Veuillez installer MetaMask pour utiliser cette fonctionnalité.</span>
+                <button class="btnAnnuller" onclick="hideElement(this.parentElement)" >X</button>
+                <a href="https://metamask.io/download/" target="_blank">installer MetaMask</a>
+            </div>
             <div class="login-box">
                 <h2>Accéder à la plateforme</h2>
-                <button id="connectButton" >Se connecter avec MetaMask</button>
+                <button id="connectButton" class="btnConnection">Se connecter avec MetaMask</button>
             </div>
         <% }else{ %>
             <p>page de scan</p>
