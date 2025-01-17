@@ -31,19 +31,6 @@ body {
     color: #0056b3;
 }
 
-.btnAnnuller {
-    border: none;
-    grid-row: 1;
-    background: none;
-    color: #721c24;
-    cursor: pointer;
-    padding: 0;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    /* padding-left: 300px; */
-}
-
 .hide {
     display: none;
 }
@@ -64,6 +51,22 @@ header img {
     height: 100px;
     max-width: 100%;
     object-fit: contain;
+    
+}
+.btnDeconnection {
+    background-color: #3E5879;
+    color: #D8C4B6;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    position: absolute;
+    right: 10px;
+}
+.btnDeconnection:hover{
+    background-color: #5a95e3;
 }
 
 /* Conteneur principal */
@@ -135,7 +138,7 @@ header img {
     max-width: 300px;
 }
 
-button:hover {
+.btnConnection:hover {
     background-color: #c4afa2;
 }
 
@@ -152,7 +155,7 @@ button:hover {
     background-color: #007BFF;
     color: #fff;
     width: 200px;
-    height: 35px;
+    height: 45px;
     margin: 0px 0 7px 0;
     border-radius: 8px;
     border: none;

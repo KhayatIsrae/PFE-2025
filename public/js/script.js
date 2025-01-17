@@ -23,11 +23,25 @@ const connectMetamask = async () => {
     }
     return { WALLET_CONNECTED };
 }
+const disconnectMetamask=()=>{
+    fetch(url,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({WALLET_CONNECTED: "" })
+    })
+    .then(response=>window.location.reload())
+    .catch(e=>console.error(e))
+}
 
 if (isConnected) {
-    const loginBox=document.querySelector(".login-box ")
-    loginBox.style.width="500px"
-    loginBox.style.height="420px"
+    let btnDeconnection = document.getElementById("btnDeconnection")
+    btnDeconnection.setAttribute("class", "btnDeconnection")
+    btnDeconnection.addEventListener("click", () => {
+        disconnectMetamask()
+    })
+    const loginBox = document.querySelector(".login-box ")
+    loginBox.style.width = "500px"
+    loginBox.style.height = "420px"
     const scanner = new Html5QrcodeScanner('reader', {
         qrbox: {
             width: 250,
