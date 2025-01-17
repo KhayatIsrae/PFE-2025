@@ -11,6 +11,7 @@ body {
     background-color: #f2f2f2;
     overflow: hidden;
 }
+
 .popUp {
     position: fixed;
     top: 100px;
@@ -19,30 +20,34 @@ body {
     margin: 10px;
     padding: 15px;
     background-color: #f8d7da;
-    color:#721c24 ;
+    color: #721c24;
     border: 1px solid #f5c6cb;
     border-radius: 5px;
     box-sizing: border-box;
     width: 400px;
 }
-.popUp a{
-    color:  #0056b3;
+
+.popUp a {
+    color: #0056b3;
 }
-.btnAnnuller{
-    border:none;
+
+.btnAnnuller {
+    border: none;
     grid-row: 1;
-    background:none;
-    color:#721c24;
-    cursor:pointer;
-    padding:0;
+    background: none;
+    color: #721c24;
+    cursor: pointer;
+    padding: 0;
     position: absolute;
     top: 5px;
     right: 10px;
     /* padding-left: 300px; */
 }
-.hide{
+
+.hide {
     display: none;
 }
+
 /* Header */
 header {
     background-color: #d5d2d2;
@@ -59,7 +64,7 @@ header img {
     height: 100px;
     max-width: 100%;
     object-fit: contain;
-} /*ici*/
+}
 
 /* Conteneur principal */
 .container {
@@ -67,9 +72,11 @@ header img {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: calc(100vh - 90px); /* Ajuste la hauteur pour exclure le header */
+    height: calc(100vh - 90px);
+    /* Ajuste la hauteur pour exclure le header */
     padding: 20px;
-    overflow: hidden; /* Empêche les débordements internes */
+    overflow: hidden;
+    /* Empêche les débordements internes */
 }
 
 /* Image de fond */
@@ -105,6 +112,14 @@ header img {
     font-size: 1.5em;
 }
 
+.login-box p {
+    color: #D8C4B6;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    border-radius: 8px;
+    margin: 8px;
+}
+
 /* Bouton de connexion */
 .btnConnection {
     padding: 15px;
@@ -115,7 +130,7 @@ header img {
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.2s;
     width: 100%;
     max-width: 300px;
 }
@@ -124,6 +139,46 @@ button:hover {
     background-color: #c4afa2;
 }
 
+#reader {
+    width: 280px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: auto;
+    border: 5px solid black;
+    background-color: #d5d2d2;
+}
+
+#html5-qrcode-button-file-selection, #html5-qrcode-button-camera-stop, #html5-qrcode-button-camera-permission, #html5-qrcode-button-camera-start {
+    background-color: #007BFF;
+    color: #fff;
+    width: 200px;
+    height: 35px;
+    margin: 0px 0 7px 0;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#html5-qrcode-button-camera-permission, #html5-qrcode-button-camera-start {
+    margin: 40px 0 7px 0;
+}
+#html5-qrcode-anchor-scan-type-change {
+    color: #0056b3;
+    cursor: pointer;
+}
+
+#reader__scan_region img {
+    content: url('/images/codeScanner.jpg');
+    /* Change l'image source */
+    width: 100px;
+    /* Définit la largeur */
+    height: 100px;
+    /* Définit la hauteur */
+    border-radius: 10px;
+    /* Ajoute des coins arrondis si nécessaire */
+}
+
+/*ici*/
 @media (max-width: 768px) {
     header {
         height: 100px;

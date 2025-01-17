@@ -1,14 +1,5 @@
 const url = "http://localhost:3000/"
 
-
-let connectButton = document.getElementById("connectButton")
-connectButton.addEventListener("click", () => {
-    connectMetamask()
-})
-
-const hideElement = (element) => {
-    element.setAttribute("class", "hide")
-}
 const connectMetamask = async () => {
     if (typeof window.ethereum === 'undefined') {
         let popUp = document.getElementById("popUp")
@@ -18,7 +9,7 @@ const connectMetamask = async () => {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             await provider.send("eth_requestAccounts", [])
             const signer = provider.getSigner()
-            const WALLET_CONNECTED = await signer.getAddress()
+            WALLET_CONNECTED = await signer.getAddress()
             fetch(url, {
                 method: "POST",
                 body: JSON.stringify({ WALLET_CONNECTED }),
@@ -30,6 +21,28 @@ const connectMetamask = async () => {
             console.error("Error connecting to MetaMask", error);
         }
     }
-
+    return { WALLET_CONNECTED };
 }
+
+if (isConnected) {
+    const loginBox=document.querySelector(".login-box ")
+    loginBox.style.width="500px"
+    loginBox.style.height="420px"
+    const scanner = new Html5QrcodeScanner('reader', {
+        qrbox: {
+            width: 250,
+            height: 250,
+        },
+        fps: 20
+    })
+    scanner.render((result) => {
+        //code du resultat
+    });
+} else {
+    let connectButton = document.getElementById("connectButton")
+    connectButton.addEventListener("click", () => {
+        connectMetamask()
+    })
+}
+
 
