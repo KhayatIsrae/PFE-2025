@@ -181,7 +181,6 @@ header img {
     /* Ajoute des coins arrondis si nécessaire */
 }
 
-/*ici*/
 @media (max-width: 768px) {
     header {
         height: 100px;
@@ -214,7 +213,7 @@ header img {
     }
 
     header img {
-        height: 100px;
+        height: 90px;
     }
 
     .login-box {

@@ -51,6 +51,9 @@ if (isConnected) {
     })
     scanner.render((result) => {
         //code du resultat
+        // const idExam=result.idExam
+        // const etudiant=WALLET_CONNECTED
+        // console.log("hello",WALLET_CONNECTED)
     });
 } else {
     let connectButton = document.getElementById("connectButton")
