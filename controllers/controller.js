@@ -8,6 +8,7 @@ module.exports = {
         } else {
             WALLET_CONNECTED = req.session.WALLET_CONNECTED
         }
+        
         res.render("index.ejs", { WALLET_CONNECTED })
     }
     ,

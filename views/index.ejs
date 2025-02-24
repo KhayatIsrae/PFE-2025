@@ -26,9 +26,8 @@
             <img src="/images/background.jpg" alt="Background Image">
         </div>
         <div class="hide" id="popUp">
-            <span>MetaMask n'est pas installé. Veuillez installer MetaMask pour utiliser cette fonctionnalité.</span>
+            <a class="hide" id="popUpA"></a>
             <button class="btnAnnuller" onclick="hideElement(this.parentElement)">X</button>
-            <a href="https://metamask.io/download/" target="_blank">installer MetaMask</a>
         </div>
         <div class="login-box">
             <% if(locals.WALLET_CONNECTED==="" ){%>

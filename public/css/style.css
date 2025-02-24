@@ -12,22 +12,42 @@ body {
     overflow: hidden;
 }
 
-.popUp {
+.popUpVal, .popUpErr {
     position: fixed;
     top: 100px;
     left: 65%;
-    display: grid;
-    margin: 10px;
-    padding: 15px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4edda; /* Vert clair */
+    color: #155724; /* Vert foncé */
+    border: 1px solid #c3e6cb; /* Bordure verte */
+    border-radius: 8px;
+    padding: 15px 20px;
     width: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.popUpErr {
+    background-color: #f8d7da; /* Rouge clair */
+    color: #721c24; /* Rouge foncé */
+    border: 1px solid #f5c6cb; /* Bordure rouge */
+}
+.popUpVal p {
+    flex-grow: 1;
+    font-weight: bold;
+    color: #155724; /* Assure la visibilité */
 }
 
-.popUp a {
+.btnAnnuller {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #721c24;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.popUpErr a {
     color: #0056b3;
 }
 
@@ -205,6 +225,28 @@ header img {
         padding: 12px;
         font-size: 1em;
     }
+    .popUpVal, .popUpErr {
+        max-width: 300px;
+        right: 10px; /* Garde le popup à droite */
+        left: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .popUpVal .btnAnnuller, .popUpErr .btnAnnuller {
+        margin-top: 10px;
+        width: 100%;
+        max-width: 150px;
+    }
+
+    .popUpVal .close-btn, .popUpErr .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -228,5 +270,28 @@ header img {
     button {
         padding: 10px;
         font-size: 0.9em;
+    }
+    .popUpVal, .popUpErr {
+        max-width: 190px;
+        right: 10px;
+        left: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        z-index: 1;
+    }
+
+    .popUpVal .btnAnnuller, .popUpErr .btnAnnuller {
+        margin-top: 10px;
+        width: 100%;
+        max-width: 150px;
+    }
+
+    .popUpVal .close-btn, .popUpErr .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
     }
 }
