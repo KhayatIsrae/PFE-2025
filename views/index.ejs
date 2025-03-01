@@ -30,17 +30,19 @@
             <button class="btnAnnuller" onclick="hideElement(this.parentElement)">X</button>
         </div>
         <div class="login-box">
-            <% if(locals.WALLET_CONNECTED==="" ){%>
-                <script>isConnected=false</script>
+            <% if(locals.utilisateur==="" ){%>
+                <script>isConnected = false</script>
                 <h2>Accéder à la plateforme</h2>
-                <button id="connectButton" class="btnConnection">Se connecter avec MetaMask</button>
-            <% }else{ %>
-                <script>isConnected=true</script>
-                <p>Scanner le code QR de votre examen ici:</p>
-                <div class="scan-box" id="reader">
-                    <!-- scanner area -->
-                </div>
-            <% } %>
+                <input id="emailInput" type="email" placeholder="Email" class="inputField">
+                <input id="passwordInput" type="password" placeholder="Mot de passe" class="inputField">
+                <button id="connectButton" type="" class="btnConnection">Se connecter</button>
+                <% }else{ %>
+                    <script>isConnected = true</script>
+                    <p>Scanner le code QR de votre examen ici:</p>
+                    <div class="scan-box" id="reader">
+                        <!-- scanner area -->
+                    </div>
+                    <% } %>
         </div>
     </div>
 </body>

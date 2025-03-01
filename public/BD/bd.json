@@ -1,0 +1,19 @@
+{
+  "etudiants": [
+    {
+      "email": "etudiant1@example.com",
+      "mdp": "111",
+      "username": "israe1"
+    },
+    {
+      "email": "etudiant2@example.com",
+      "mdp": "password5678",
+      "username": "etudiant2"
+    },
+    {
+      "email": "etudiant3@example.com",
+      "mdp": "securepass",
+      "username": "etudiant3"
+    }
+  ]
+}
