@@ -1,5 +1,5 @@
 const url = "http://localhost:3000/"
-const urlPresence = "http://localhost:3000/marquerPresence"
+const urlPresence = "http://localhost:3000/presence"
 
 const hideElement = (Element) => {
     Element.setAttribute("class", "hide")
@@ -52,7 +52,6 @@ if (isConnected) {
         fps: 20
     })
     scanner.render((result) => {
-        //code du resultat
         let obj = { idExam: result }
         fetch(urlPresence, {
             method: "POST",
@@ -68,7 +67,6 @@ if (isConnected) {
                     message.textContent = "Erreur, présence non marquée";
                 }
             })
-
             .catch(e => console.log(e))
     });
 } else {

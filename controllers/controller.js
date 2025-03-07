@@ -21,11 +21,11 @@ const verifierUtilisateur = (email, password) => {
         return 1;
     })
 };
-const username = async (email) => {
+const userId = async (email) => {
     return loadDatabase()
         .then(etudiants => {
             let utilisateur = etudiants.find(user => user.email === email);
-            return utilisateur.username
+            return utilisateur.id
         })
 }
 
@@ -38,7 +38,6 @@ module.exports = {
         } else {
             utilisateur = req.session.utilisateur
         }
-        // console.log("user",utilisateur)
         res.render("index.ejs", { utilisateur })
     }
     ,
@@ -56,9 +55,9 @@ module.exports = {
                     if (result == -1) {
                         return res.status(404).json({ msg: "Utilisateur non trouvé" });
                     } else if (result) {
-                        username(mail)
-                            .then(username => {
-                                req.session.utilisateur = username
+                        userId(mail)
+                            .then(userId => {
+                                req.session.utilisateur = userId
                                 return res.redirect("/")
                             })
                     } else {
