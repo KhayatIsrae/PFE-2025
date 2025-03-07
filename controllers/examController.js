@@ -4,7 +4,7 @@ const path = "public/BD/bdexam.json";
 const loadExams = () => {
     return fs.promises.readFile(path)
         .then(buffer => JSON.parse(buffer.toString()))
-        .then(data => data.exams) 
+        .then(data => data.exams)
         .catch(() => [])
 }
 
@@ -26,19 +26,19 @@ module.exports = {
         if (!nom || !date) {
             return res.status(400).json({ msg: "Nom et date obligatoires" })
         }
-        const newExam = {id,nom,date}
+        const newExam = { id, nom, date }
         await saveExam(newExam)
         res.status(201).json({ msg: "exam ajoutee avec succes" })
         res.end()
     },
-    get: (req,res)=>{
+    get: (req, res) => {
         loadExams()
-        .then(exams=>{
-            if(exams){
-                res.status(200).json({exams})
-            }else{
-                res.status(400)
-            }
-        }).catch(err=>res.status(500))
+            .then(exams => {
+                if (exams) {
+                    res.status(200).json({ exams })
+                } else {
+                    res.status(400)
+                }
+            }).catch(err => res.status(500))
     }
 }

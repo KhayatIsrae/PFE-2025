@@ -3,6 +3,7 @@ const app = express()
 const PORT = 3000
 const router = require("./routes/router")
 const session = require("express-session")
+const cors = require("cors")
 
 app.use(express.json())
 app.set("view engine", "ejs")
@@ -13,7 +14,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }))
-
+app.use(cors())
 
 app.use(router)
 app.listen(PORT)
