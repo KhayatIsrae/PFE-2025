@@ -5,7 +5,7 @@ const loadExams = () => {
     return fs.promises.readFile(path)
         .then(buffer => JSON.parse(buffer.toString()))
         .then(data => data.exams)
-        .catch(() => [])
+        .catch((e) => console.error(e))
 }
 
 const saveExam = (exam) => {
@@ -15,21 +15,24 @@ const saveExam = (exam) => {
             return exams
         }).then(tab => {
             return fs.promises.writeFile(path, JSON.stringify({ exams: tab }, null, 3));
-        })
+        }).catch(e => console.error(e))
 }
 module.exports = {
     post: async (req, res) => {
-        res.setHeader("Access-Control-Allow-Origin", "*")
-        res.setHeader("Access-Control-Allow-Headers", "Content-Type")
-        res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, DELETE, POST, PUT")
-        const { nom, date, id } = req.body;
-        if (!nom || !date) {
-            return res.status(400).json({ msg: "Nom et date obligatoires" })
+        try {
+            const { nom, date, id } = req.body;
+            if (!nom || !date) {
+                return res.status(400).json({ msg: "Nom et date obligatoires" })
+            }
+            const newExam = { id, nom, date }
+            await saveExam(newExam)
+            res.status(201).json({ msg: "exam ajoutee avec succes" })
+            res.end()
+        } catch (err) {
+            console.error(err)
+            res.status(500).json({ msg: "erreur interne du serveur" })
         }
-        const newExam = { id, nom, date }
-        await saveExam(newExam)
-        res.status(201).json({ msg: "exam ajoutee avec succes" })
-        res.end()
+
     },
     get: (req, res) => {
         loadExams()
@@ -37,8 +40,11 @@ module.exports = {
                 if (exams) {
                     res.status(200).json({ exams })
                 } else {
-                    res.status(400)
+                    res.status(400).json({ msg: "aucun exam disponible" })
                 }
-            }).catch(err => res.status(500))
+            }).catch(err => {
+                console.error(err)
+                res.status(500).json({ msg: "erreur interne du serveur" })
+            })
     }
 }

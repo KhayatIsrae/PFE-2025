@@ -32,7 +32,7 @@
         <div class="hide" id="loader-container">
             <div class="loader"></div>
         </div>
-        
+
         <div class="login-box">
             <% if(locals.utilisateur==="" ){%>
                 <script>isConnected = false</script>
@@ -42,11 +42,17 @@
                 <button id="connectButton" type="" class="btnConnection">Se connecter</button>
                 <% }else{ %>
                     <script>isConnected = true</script>
-                    <p>Scanner le code QR de votre examen ici:</p>
-                    <div class="scan-box" id="reader">
-                        <!-- scanner area -->
-                    </div>
+                    <% if(locals.exam==1 ){%>
+                        <script>exam = true</script>
+                        <p>Scanner le code QR de votre examen ici:</p>
+                        <div class="scan-box" id="reader">
+                            <!-- scanner area -->
+                        </div>
+                    <% }else{ %>
+                        <script>exam = false</script>
+                        <p>aucun exam disponible</p>
                     <% } %>
+                <% } %>
         </div>
     </div>
 </body>

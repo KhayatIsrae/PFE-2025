@@ -25,7 +25,10 @@ const logIn = (mail, mdp) => {
                 popUp.setAttribute("class", "popUpErr");
             }
         })
-        .catch(e => console.log("erreur:", e))
+        .catch(e => {
+            message.textContent = "erreur interne du serveur"
+            popUp.setAttribute("class", "popUpErr");
+        })
 }
 const disconnect = () => {
     fetch(url, {
@@ -45,36 +48,41 @@ if (isConnected) {
     const loginBox = document.querySelector(".login-box ")
     loginBox.style.width = "500px"
     loginBox.style.height = "420px"
-    const scanner = new Html5QrcodeScanner('reader', {
-        qrbox: {
-            width: 250,
-            height: 250,
-        },
-        fps: 20
-    })
-    scanner.render((result) => {
-        let obj = { idExam: result }
-        loader.setAttribute("class", "loader-container")
-        fetch(urlPresence, {
-            method: "POST",
-            body: JSON.stringify(obj),
-            headers: { "Content-Type": "application/json" }
+    if (exam) {
+        const scanner = new Html5QrcodeScanner('reader', {
+            qrbox: {
+                width: 250,
+                height: 250,
+            },
+            fps: 20
         })
-            .then(res => {
-                loader.setAttribute("class", "hide")
-                if (res.status >= 200 && res.status < 300) {
-                    popUp.setAttribute("class", "popUpVal");
-                    message.textContent = "Présence marquée avec succès";
-                } else {
+        scanner.render((result) => {
+            let obj = { idExam: result }
+            loader.setAttribute("class", "loader-container")
+            fetch(urlPresence, {
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: { "Content-Type": "application/json" }
+            })
+                .then(async res => {
+                    loader.setAttribute("class", "hide")
+                    if (res.status >= 200 && res.status < 300) {
+                        popUp.setAttribute("class", "popUpVal");
+                        res = await res.json()
+                        message.textContent = res.msg;
+                    } else {
+                        res = await res.json()
+                        popUp.setAttribute("class", "popUpErr");
+                        message.textContent = res.msg;
+                    }
+                })
+                .catch(e => {
+                    loader.setAttribute("class", "loader-container")
                     popUp.setAttribute("class", "popUpErr");
-                    message.textContent = "Erreur, présence non marquée";
-                }
-            })
-            .catch(e => {
-                console.log(e)
-                loader.setAttribute("class", "loader-container")
-            })
-    });
+                    message.textContent = "erreur dans le serveur";
+                })
+        });
+    }
 } else {
     let connectButton = document.getElementById("connectButton")
     connectButton.addEventListener("click", () => {

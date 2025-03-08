@@ -39,19 +39,17 @@ module.exports = {
         const etudiant = req.session.utilisateur
         try {
             if (await marquerPresence(idExam, etudiant)) {
-                res.status(201)
+                res.status(201).json({ msg:"Présence marquée avec succès" })
                 res.end()
             } else {
-                res.status(400)
+                res.status(400).json({ msg:"Erreur, présence non marquée" })
                 res.end()
             }
         } catch (e) {
-            res.status(500)
+            res.status(500).json({ msg:"erreur interne du serveur" })
             res.end()
             console.log(e)
-
         }
-
     },
     get: async (req, res) => {
         const idExam = req.query.idExam;
@@ -72,7 +70,7 @@ module.exports = {
             })
             .catch(e => {
                 console.error(e);
-                res.status(500)
+                res.status(500).json({ msg:"erreur interne du serveur" })
             })
     }
 }
