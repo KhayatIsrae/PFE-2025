@@ -29,6 +29,10 @@
             <a class="hide" id="popUpA"></a>
             <button class="btnAnnuller" onclick="hideElement(this.parentElement)">X</button>
         </div>
+        <div class="hide" id="loader-container">
+            <div class="loader"></div>
+        </div>
+        
         <div class="login-box">
             <% if(locals.utilisateur==="" ){%>
                 <script>isConnected = false</script>

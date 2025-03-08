@@ -4,6 +4,7 @@ const urlPresence = "http://localhost:3000/presence"
 const hideElement = (Element) => {
     Element.setAttribute("class", "hide")
 }
+let loader = document.getElementById("loader-container");
 let popUp = document.getElementById("popUp");
 let closeButton = popUp.querySelector(".btnAnnuller");
 let message = document.createElement("p");
@@ -53,12 +54,14 @@ if (isConnected) {
     })
     scanner.render((result) => {
         let obj = { idExam: result }
+        loader.setAttribute("class", "loader-container")
         fetch(urlPresence, {
             method: "POST",
             body: JSON.stringify(obj),
             headers: { "Content-Type": "application/json" }
         })
             .then(res => {
+                loader.setAttribute("class", "hide")
                 if (res.status >= 200 && res.status < 300) {
                     popUp.setAttribute("class", "popUpVal");
                     message.textContent = "Présence marquée avec succès";
@@ -67,7 +70,10 @@ if (isConnected) {
                     message.textContent = "Erreur, présence non marquée";
                 }
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                console.log(e)
+                loader.setAttribute("class", "loader-container")
+            })
     });
 } else {
     let connectButton = document.getElementById("connectButton")
