@@ -17,6 +17,7 @@ router.route("/presence")
 router.route("/exams")
 .post(examController.post)
 .get(examController.get)
+.delete(examController.delete)
 
 
 module.exports=router
