@@ -8,7 +8,6 @@ let loader = document.getElementById("loader-container");
 let popUp = document.getElementById("popUp");
 let closeButton = popUp.querySelector(".btnAnnuller");
 let message = document.createElement("p");
-let link = document.getElementById("popUpA");
 
 const logIn = (mail, mdp) => {
     fetch(url, {
@@ -93,4 +92,3 @@ if (isConnected) {
 }
 popUp.appendChild(message);
 popUp.insertBefore(message, closeButton);
-popUp.insertBefore(link, closeButton);

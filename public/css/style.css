@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+    /* Add smooth scrolling for anchor links */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,30 +10,155 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    overflow: hidden;
+    color: #333;
 }
 
 /* Header */
 header {
-    background-color: #d5d2d2;
+    background-color: #07213c;
     color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    height: 80px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 80px;
+    object-fit: contain;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #aaccf7;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/p.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #070542;
+    /* Red fallback to debug if image fails */
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    height: 90px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #fff;
 }
 
-header img {
-    height: 100px;
-    max-width: 100%;
-    object-fit: contain;
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
 
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+}
+
+.btn-hero {
+    background-color: #aaccf7;
+    color: #192e4a;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: initial;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-hero:hover {
+    background-color: #63a6fd;
+}
+
+/* Services Section */
+.services {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.services h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: #aaccf7;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #07213c;
+}
+
+/* Form Section */
+.form-section {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #07213c 0%, #2a4a7e 100%);
+    /* Gradient background for a modern look */
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-height: 500px;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    /* Lower opacity to make form stand out */
 }
 
 .popUpVal,
@@ -40,27 +170,19 @@ header img {
     justify-content: space-between;
     align-items: center;
     background-color: #d4edda;
-    /* Vert clair */
     color: #155724;
-    /* Vert foncé */
     border: 1px solid #c3e6cb;
-    /* Bordure verte */
     border-radius: 8px;
     padding: 15px 20px;
     width: 400px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 .popUpErr {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
-}
-
-.popUpVal p {
-    flex-grow: 1;
-    font-weight: bold;
-    color: #155724;
 }
 
 .btnAnnuller {
@@ -72,9 +194,141 @@ header img {
     margin-left: 10px;
 }
 
+.hide {
+    display: none;
+}
+
+.login-box {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    /* Gradient for a sleek look */
+    color: #333;
+    /* Darker text for contrast */
+    width: 500px;
+    height: 350px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+        /* 3D shadow effect */
+        -10px -10px 20px rgba(154, 184, 250, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.7s ease, box-shadow 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.login-box:hover {
+    transform: translateY(-10px);
+    /* Slight lift for 3D effect on hover */
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.3),
+        -15px -15px 30px rgba(255, 255, 255, 0.4);
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    /* Subtle text shadow for depth */
+}
+
+.login-box p {
+    color: #666;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    margin: 8px;
+}
+
+.inputField {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #aaccf7;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #aaccf7;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    /* Inset shadow for depth */
+    transition: box-shadow 0.3s ease;
+}
+
+.inputField:focus {
+    outline: none;
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+}
+
+.btnConnection {
+    padding: 15px;
+    background: linear-gradient(145deg, #aaccf7, #aaccf7);
+    /* Gradient for button */
+    color: #3E5879;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+        -5px -5px 10px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btnConnection:hover {
+    transform: translateY(-3px);
+    /* Slight lift on hover */
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.25),
+        -8px -8px 15px rgba(255, 255, 255, 0.35);
+}
+
+.btnDeconnection {
+    padding: 15px;
+    background: linear-gradient(145deg, #aaccf7, #aaccf7);
+    /* Gradient for button */
+    color: #3E5879;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+        -5px -5px 10px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.scan-box {
+    width: 280px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: auto;
+    border: 5px solid #333;
+    background-color: #f9f9f9;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+}
+
+#reader {
+    width: 280px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: auto;
+    border: 5px solid black;
+    background-color: #d5d2d2;
+    z-index: 1;
+}
+
 .loader-container {
     position: fixed;
-    top: 90px;
+    top: var(--header-height, 70px);
     left: 0;
     width: 100%;
     height: 100%;
@@ -83,186 +337,31 @@ header img {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+    padding-right: 20px;
 }
 
 .loader {
-    position: absolute;
-    scale: 0.7;
-    animation: rotate 2.5s infinite;
-    height: 50px;
+    border: 6px solid #aaccf7;
+    /* Match your theme color */
+    border-top: 6px solid #07213c;
+    /* Contrast color for spinning effect */
+    border-radius: 50%;
     width: 50px;
-    top: 50%;
-    left: 50%;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    
+    /* Spinning animation */
 }
 
-.loader:before,
-.loader:after {
-    content: "";
-    display: block;
-    height: 20px;
-    width: 20px;
-}
-
-.loader:before {
-    animation: box1 2.5s infinite;
-    background-color: #d5d2d2; 
-    box-shadow: 30px 0 0 #a6a6a6;
-    margin-bottom: 10px;
-}
-
-.loader:after {
-    animation: box2 2.5s infinite;
-    background-color: #a6a6a6; 
-    box-shadow: 30px 0 0 #d5d2d2;
-}
-
-@keyframes rotate {
+@keyframes spin {
     0% {
-        transform: rotate(0deg) scale(0.8);
-    }
-
-    50% {
-        transform: rotate(360deg) scale(1.2);
+        transform: rotate(0deg);
     }
 
     100% {
-        transform: rotate(720deg) scale(0.8);
+        transform: rotate(360deg);
     }
-}
-
-@keyframes box1 {
-    0% {
-        box-shadow: 30px 0 0 #a6a6a6;
-    }
-
-    50% {
-        box-shadow: 0 0 0 #a6a6a6;
-        margin-bottom: 0;
-        transform: translate(15px, 15px);
-    }
-
-    100% {
-        box-shadow: 30px 0 0 #a6a6a6;
-        margin-bottom: 10px;
-    }
-}
-
-@keyframes box2 {
-    0% {
-        box-shadow: 30px 0 0 #d5d2d2;
-    }
-
-    50% {
-        box-shadow: 0 0 0 #d5d2d2;
-        margin-top: -20px;
-        transform: translate(15px, 15px);
-    }
-
-    100% {
-        box-shadow: 30px 0 0 #d5d2d2;
-        margin-top: 0;
-    }
-}
-
-.hide {
-    display: none;
-}
-
-.btnDeconnection {
-    background-color: #3E5879;
-    color: #D8C4B6;
-    border: none;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    cursor: pointer;
-    padding: 10px 20px;
-    font-size: 16px;
-    position: absolute;
-    right: 10px;
-}
-
-.btnDeconnection:hover {
-    background-color: #5a95e3;
-}
-
-/* Conteneur principal */
-.container {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: calc(100vh - 90px);
-    padding: 20px;
-    overflow: hidden;
-}
-
-/* Image de fond */
-.background img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-/* Boîte de connexion */
-.login-box {
-    background-color: #3E5879;
-    color: #fff;
-    width: 450px;
-    height: 300px;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-right: 50px;
-}
-
-.login-box h2 {
-    margin-bottom: 20px;
-    font-size: 1.5em;
-}
-
-.login-box p {
-    color: #D8C4B6;
-    font-family: 'Arial', sans-serif;
-    font-size: 20px;
-    border-radius: 8px;
-    margin: 8px;
-}
-
-/* Bouton de connexion */
-.btnConnection {
-    padding: 15px;
-    background-color: #D8C4B6;
-    color: #3E5879;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-    width: 100%;
-    max-width: 300px;
-}
-
-.btnConnection:hover {
-    background-color: #c4afa2;
-}
-/* scanner */
-#reader {
-    width: 280px;
-    height: 300px;
-    border-radius: 10px;
-    overflow: auto;
-    border: 5px solid black;
-    background-color: #d5d2d2;
 }
 
 #html5-qrcode-button-file-selection,
@@ -296,29 +395,49 @@ header img {
     border-radius: 10px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
+    .loader-container{
+        top: var(--header-height, 150px);
+    }
     header {
-        height: 100px;
-        padding: 10px;
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
     }
 
-    header img {
-        height: 80px;
+    nav {
+        margin-top: 10px;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .btn-hero {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .service-card {
+        width: 100%;
     }
 
     .login-box {
-        margin-right: 20px;
         width: 90%;
         max-width: 350px;
-    }
-
-    .login-box h2 {
-        font-size: 1.2em;
-    }
-
-    button {
-        padding: 12px;
-        font-size: 1em;
+        height: auto;
+        padding: 20px;
     }
 
     .popUpVal,
@@ -331,6 +450,7 @@ header img {
         flex-direction: column;
         align-items: center;
         padding: 20px;
+        z-index: 1000;
     }
 
     .popUpVal .btnAnnuller,
@@ -349,26 +469,23 @@ header img {
 }
 
 @media (max-width: 480px) {
-    header {
-        height: 80px;
+    .form-section{
+        max-height: 480px;
+    }
+    .hero-content h1 {
+        font-size: 1.5em;
     }
 
-    header img {
-        height: 90px;
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .service-card {
+        width: 100%;
     }
 
     .login-box {
-        margin-right: 10px;
         padding: 20px;
-    }
-
-    .login-box h2 {
-        font-size: 1em;
-    }
-
-    button {
-        padding: 10px;
-        font-size: 0.9em;
     }
 
     .popUpVal,
@@ -381,7 +498,7 @@ header img {
         flex-direction: column;
         align-items: center;
         padding: 15px;
-        z-index: 1;
+        z-index: 1000;
     }
 
     .popUpVal .btnAnnuller,

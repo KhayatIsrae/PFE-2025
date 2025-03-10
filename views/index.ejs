@@ -16,45 +16,82 @@
 <body>
     <!-- Header -->
     <header>
-        <img src="/images/logo.png" alt="Logo">
-        <button class="hide" id="btnDeconnection">se deconnecter</button>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </div>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#services">Conseils D'utilisation </a>
+            <a href="#form-section">Formulaire</a>
+        </nav>
     </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Université Sidi Mohammed Ben Abdellah-ESTF</h1>
+            <p>Connecter vous pour Scanner le Code QR</p>
+            <a href="#form-section" class="btn-hero">Se connecter</a>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Conseils D'utilisation </h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Utilisation Responsable de l'Application</h3>
+                <p>Utilisez l'application de manière honnête. Ne trichez pas pendant les examens et ne partagez pas
+                    votre téléphone avec un autre étudiant.</p>
+            </div>
+            <div class="service-card">
+                <h3>Directives de Sécurité</h3>
+                <p>Protégez vos identifiants. Ne partagez jamais votre mot de passe ou votre code QR avec d'autres
+                    personnes.</p>
+            </div>
+            <div class="service-card">
+                <h3>Intégrité des Examens</h3>
+                <p>Respectez les règles d'examen. Évitez d'échanger des réponses ou d'utiliser des dispositifs non
+                    autorisés.</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Contenu principal -->
-    <div class="container">
-        <div class="background">
-            <img src="/images/background.jpg" alt="Background Image">
-        </div>
-        <div class="hide" id="popUp">
-            <a class="hide" id="popUpA"></a>
-            <button class="btnAnnuller" onclick="hideElement(this.parentElement)">X</button>
-        </div>
-        <div class="hide" id="loader-container">
-            <div class="loader"></div>
-        </div>
+    <!-- Form Section (Replacing Features Section) -->
+    <section class="form-section" id="form-section">
+        <div class="container">
+            <div class="background">
+                <img src="" alt="Background Image">
+            </div>
+            <div class="hide" id="popUp">
+                <button class="btnAnnuller" onclick="hideElement(this.parentElement)">X</button>
+            </div>
+            <div class="hide" id="loader-container">
+                <div class="loader"></div>
+            </div>
 
-        <div class="login-box">
-            <% if(locals.utilisateur==="" ){%>
-                <script>isConnected = false</script>
-                <h2>Accéder à la plateforme</h2>
-                <input id="emailInput" type="email" placeholder="Email" class="inputField">
-                <input id="passwordInput" type="password" placeholder="Mot de passe" class="inputField">
-                <button id="connectButton" type="" class="btnConnection">Se connecter</button>
-                <% }else{ %>
-                    <script>isConnected = true</script>
-                    <% if(locals.exam==1 ){%>
-                        <script>exam = true</script>
-                        <p>Scanner le code QR de votre examen ici:</p>
-                        <div class="scan-box" id="reader">
-                            <!-- scanner area -->
-                        </div>
+            <div class="login-box">
+                <button class="hide" id="btnDeconnection">se deconnecter</button>
+                <% if(locals.utilisateur==="" ){%>
+                    <script>isConnected = false</script>
+                    <h2>Accéder à la plateforme</h2>
+                    <input id="emailInput" type="email" placeholder="Email" class="inputField">
+                    <input id="passwordInput" type="password" placeholder="Mot de passe" class="inputField">
+                    <button id="connectButton" type="" class="btnConnection">Se connecter</button>
                     <% }else{ %>
-                        <script>exam = false</script>
-                        <p>aucun exam disponible</p>
-                    <% } %>
-                <% } %>
+                        <script>isConnected = true</script>
+                        <% if(locals.exam==1 ){%>
+                            <script>exam = true</script>
+                            <p>Scanner le code QR de votre examen ici:</p>
+                            <div class="scan-box" id="reader">
+                                <!-- scanner area -->
+                            </div>
+                            <% }else{ %>
+                                <script>exam = false</script>
+                                <p>aucun exam disponible</p>
+                                <% } %>
+                                    <% } %>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
 
 </html>
